@@ -2,15 +2,32 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {
-     "ename": "IndentationError",
-     "evalue": "unexpected indent (<ipython-input-6-08bcd0ff62ad>, line 147)",
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "usage: ipykernel_launcher.py [-h] checkin_date checkout_date sort locality\n",
+      "ipykernel_launcher.py: error: the following arguments are required: checkout_date, sort, locality\n"
+     ]
+    },
+    {
+     "ename": "SystemExit",
+     "evalue": "2",
      "output_type": "error",
      "traceback": [
-      "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-6-08bcd0ff62ad>\"\u001b[0;36m, line \u001b[0;32m147\u001b[0m\n\u001b[0;31m    elif datetime.strptime(checkIn,\"%Y/%m/%d\")>datetime.strptime(checkOut,\"%Y/%m/%d\"):\u001b[0m\n\u001b[0m    ^\u001b[0m\n\u001b[0;31mIndentationError\u001b[0m\u001b[0;31m:\u001b[0m unexpected indent\n"
+      "An exception has occurred, use %tb to see the full traceback.\n",
+      "\u001b[0;31mSystemExit\u001b[0m\u001b[0;31m:\u001b[0m 2\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/Users/duongtuan/anaconda3/lib/python3.6/site-packages/IPython/core/interactiveshell.py:2971: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.\n",
+      "  warn(\"To exit: use 'exit', 'quit', or Ctrl-D.\", stacklevel=1)\n"
      ]
     }
    ],
@@ -75,7 +92,7 @@
     "\n",
     "    for hotel in hotel_lists:\n",
     "        XPATH_HOTEL_LINK = './/a[contains(@class,\"property_title\")]/@href'\n",
-    "        XPATH_REVIEWS  = './/a[@class=\"review_count\"]//text()'\n",
+    "#         XPATH_REVIEWS  = './/a[@class=\"review_count\"]//text()'\n",
     "        XPATH_RANK = './/div[@class=\"popRanking\"]//text()'\n",
     "        XPATH_RATING = './/span[contains(@class,\"rating\")]/@alt'\n",
     "        XPATH_HOTEL_NAME = './/a[contains(@class,\"property_title\")]//text()'\n",
