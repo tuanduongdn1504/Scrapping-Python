@@ -28,7 +28,7 @@ To get started, let's fire up our favorite Python environment (I'm a big fan of 
 from nytimesarticle import articleAPI
 api = articleAPI('*Your Key Here*')
 Now we can use the search function with our desired search parameters/values:
-
+******************************
 ?
 3
 4
@@ -36,6 +36,7 @@ Now we can use the search function with our desired search parameters/values:
 articles = api.search( q = 'Obama',
      fq = {'headline':'Obama', 'source':['Reuters','AP', 'The New York Times']},
      begin_date = 20111231 )
+******************************
 The q (for query) parameter searches the article's body, headline and byline for a particular term. In this case, we are looking for the search term ‘Obama’. The fq (for filter query) parameter filters search results by various dimensions. For instance, ‘headline’:’Obama’ will filter search results to those with ‘Obama’ in the headline. 'source':['Reuters','The New York Times'] will filter by source (Reuters, New York Times, and AP are available through the API.) The begin_date parameter (in YYYYMMDD format) limits the date range of the search.
 
 As you can see, we can specify multiple filters by using a python dictionary and multiple values by using a list: fq = {'headline':'Obama', 'source':['Reuters','AP', 'The New York Times']}
@@ -117,6 +118,7 @@ def parse_articles(articles):
         dic['subjects'] = subjects   
         news.append(dic)
     return(news) 
+******************************
 I’ve only included the fields that I find most relevant, but you can easily add any field that I missed.
 
 Now that we have a function to parse results into a clean list, we can easily write another function that collects all articles for a search query in a given year. In this example, I want to find all the articles in Reuters, AP, and The New York Times with the search query ‘Amnesty International’:
@@ -158,6 +160,7 @@ def get_articles(date,query):
         articles = parse_articles(articles)
         all_articles = all_articles + articles
     return(all_articles)
+******************************
 This function will input a year and search query, and return a list of all articles that fit those parameters, parsing them into a nice list of dictionaries. With this, we can scale up and loop over as many years as we want:
 
 ?
@@ -171,6 +174,7 @@ for i in range(1980,2014):
     print 'Processing' + str(i) + '...'
     Amnesty_year =  get_articles(str(i),'Amnesty International')
     Amnesty_all = Amnesty_all + Amnesty_year
+******************************
 Now we have an object called Amnesty_all that lists a dictionary for each article, each containing fields like Headline, Date, Locations, Subjects, Abstract, Word Count, URL, etc.
 
 Pretty neat! We can then export the dataset into a CSV (with each row as an article, and columns for metadata) and analyze it to explore interesting questions.
@@ -190,6 +194,7 @@ with open('amnesty-mentions.csv', 'wb') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(Amnesty_all)
+******************************
 And there you have it! You just learned how to collect years worth of articles from the New York Times, parse them, and download the resulting database as a csv.
 
  --------------------
