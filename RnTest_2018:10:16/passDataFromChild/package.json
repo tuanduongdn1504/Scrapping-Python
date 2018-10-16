@@ -1,0 +1,74 @@
+{
+  "name": "passDataFromChild",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "deploy:ios": "react-native bundle --entry-file ./index.js --platform ios --bundle-output ios/main.jsbundle && fastlane beta",
+    "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all",
+    "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && rm -rf ~/.rncache && yarn install && cd android && ./gradlew clean && yarn run fix-xcode",
+    "test": "ava",
+    "test:watch": "ava --watch",
+    "coverage": "nyc ava",
+    "tron": "node_modules/.bin/reactotron",
+    "createIconFont": "./node_modules/.bin/generate-icon ./src/assets/img/customFont/styles.css --componentName=1022-app --fontFamily=1022-app > ./node_modules/react-native-vector-icons/1022-app.js && cp ./src/assets/img/customFont/1022-app.ttf ./node_modules/react-native-vector-icons/Fonts/1022-app.ttf",
+    "fix-xcode": "react-native-schemes-manager all",
+    "postinstall": "react-native-schemes-manager all"
+  },
+  "xcodeSchemes": {
+    "Debug": [
+      "Debug"
+    ],
+    "Release": [
+      "Staging",
+      "Release"
+    ],
+    "projectDirectory": "iOS"
+  },
+  "dependencies": {
+    "eslint-plugin-jest": "^21.18.0",
+    "geolib": "^2.0.23",
+    "lodash": "^4.17.11",
+    "moment": "^2.18.1",
+    "prop-types": "^15.6.1",
+    "react": "16.3.1",
+    "react-native": "0.54.2",
+    "react-native-navigation": "congnguyen91/react-native-navigation#5eeec1f",
+    "react-native-i18n": "^2.0.12",
+    "react-native-keyboard-aware-scroll-view": "^0.5.0",
+    "react-native-scrollable-tab-view": "^0.8.0",
+    "react-native-vector-icons": "^4.5.0",
+    "react-native-version-check": "^2.3.2",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-persist": "^3.5.0",
+    "redux-saga": "^0.14.3",
+    "reselect": "^4.0.0-beta.1",
+    "rn-fetch-blob": "^0.10.12",
+    "seamless-immutable": "^7.1.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-preset-react-native": "4.0.0",
+    "enzyme": "^2.7.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-eslint-comments": "^3.0.1",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-react-native": "^3.2.1",
+    "jest": "^19.0.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^16.3.2",
+    "react-native-schemes-manager": "^1.0.5",
+    "react-test-renderer": "^16.3.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
